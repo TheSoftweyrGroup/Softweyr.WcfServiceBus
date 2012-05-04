@@ -15,8 +15,10 @@ The following SOA messaging patterns are supported (with examples),
     
     or
     
-    <code>    ServiceEndpoint endpoint;
-    WcfServiceBus.Request&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), endpoint);</code>
+    <code>
+    ServiceEndpoint endpoint;    
+    WcfServiceBus.Request&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), endpoint);   
+    </code>
 
 * Publish (1 to 0...N Request):
 
@@ -28,12 +30,11 @@ The following SOA messaging patterns are supported (with examples),
 
 * Probe (1 to 0...N Request, 0...N to 1 Response):
 
-    <p><code>var responses = WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), TimeSpan.FromSeconds(30));</code></p>
-    
-    or
-   
-    <p><code>    ServiceEndpoint endpoint;
-    WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), endpoint);</code></p>
+    <p><code>var responses = WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), TimeSpan.FromSeconds(30));</code>  
+    or  
+    <code>ServiceEndpoint endpoint;    
+    WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), endpoint);
+    </code></p>
     
 Publish and Notify have the following utility methods that are supported when using the WcfServiceBus discovery proxy. 
 Endpoint susbcriptions can however be simply added to the service.model/client section of a configuration file or manually
@@ -41,16 +42,16 @@ added to the WcfServiceBus discovery proxy
 
 * Susbcribe
 
-    <code>WcfServiceBus.Subscribe&lt;IMyServiceContract&gt;();</code>
-    or
-    <code>    ServiceEndpoint endpoint;
+    <code>WcfServiceBus.Subscribe&lt;IMyServiceContract&gt;();</code>  
+    or  
+    <code>    ServiceEndpoint endpoint;  
     WcfServiceBus.Subscribe&lt;IMyServiceContract&gt;(endpoint);</code>
 
 * Unsubscribe
 
-    <code>WcfServiceBus.Unsubscribe&lt;IMyServiceContract&gt;();</code>
-    or
-    <code>    ServiceEndpoint endpoint;
+    <code>WcfServiceBus.Unsubscribe&lt;IMyServiceContract&gt;();</code>  
+    or  
+    <code>    ServiceEndpoint endpoint;  
     WcfServiceBus.Unsubscribe&lt;IMyServiceContract&gt;(endpoint);</code>
 
 Endpoint Configuration
