@@ -12,6 +12,11 @@ The following SOA messaging patterns are supported (with examples),
 * Request-Response (1 to 1 Request, 1 to 1 Response):
 
     <code>var response = WcfServiceBus.Request&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"));</code>
+    
+    or
+    
+    <code>    ServiceEndpoint endpoint;
+    WcfServiceBus.Request&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), endpoint);</code>
 
 * Publish (1 to 0...N Request):
 
@@ -23,7 +28,30 @@ The following SOA messaging patterns are supported (with examples),
 
 * Probe (1 to 0...N Request, 0...N to 1 Response):
 
-    <code>var responses = WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"));</code>
+    <p><code>var responses = WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), TimeSpan.FromSeconds(30));</code></p>
+    
+    or
+   
+    <p><code>    ServiceEndpoint endpoint;
+    WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), endpoint);</code></p>
+    
+Publish and Notify have the following utility methods that are supported when using the WcfServiceBus discovery proxy. 
+Endpoint susbcriptions can however be simply added to the service.model/client section of a configuration file or manually
+added to the WcfServiceBus discovery proxy
+
+* Susbcribe
+
+    <code>WcfServiceBus.Subscribe&lt;IMyServiceContract&gt;();</code>
+    or
+    <code>    ServiceEndpoint endpoint;
+    WcfServiceBus.Subscribe&lt;IMyServiceContract&gt;(endpoint);</code>
+
+* Unsubscribe
+
+    <code>WcfServiceBus.Unsubscribe&lt;IMyServiceContract&gt;();</code>
+    or
+    <code>    ServiceEndpoint endpoint;
+    WcfServiceBus.Unsubscribe&lt;IMyServiceContract&gt;(endpoint);</code>
 
 Endpoint Configuration
 ----------------------
