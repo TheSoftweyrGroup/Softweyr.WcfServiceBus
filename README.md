@@ -16,8 +16,8 @@ The following SOA messaging patterns are supported (with examples),
     or
     
     <code>
-    ServiceEndpoint endpoint;    
-    WcfServiceBus.Request&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), endpoint);   
+    ServiceEndpoint responseEndpoint;    
+    WcfServiceBus.Request&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), responseEndpoint);   
     </code>
 
 * Publish (1 to 0...N Request):
@@ -32,8 +32,8 @@ The following SOA messaging patterns are supported (with examples),
 
     <p><code>var responses = WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), TimeSpan.FromSeconds(30));</code>  
     or  
-    <code>ServiceEndpoint endpoint;    
-    WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), endpoint);
+    <code>ServiceEndpoint responseEndpoint;    
+    WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Hello World"), responseEndpoint);
     </code></p>
     
 Publish and Notify have the following utility methods that are supported when using the WcfServiceBus discovery proxy. 
