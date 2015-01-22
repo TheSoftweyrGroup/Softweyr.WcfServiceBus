@@ -30,13 +30,13 @@ The following SOA messaging patterns are supported (with examples),
 
 * Probe (1 to 0...N Request, 0...N to 1 Response):
 
-    <p><code>var responses = WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Anyone There?"), TimeSpan.FromSeconds(30));</code>  
+    <code>var responses = WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Anyone There?"), TimeSpan.FromSeconds(30));</code>  
     
     or  
     
     <code>ServiceEndpoint responseEndpoint;    
     WcfServiceBus.Probe&lt;IMyServiceContract&gt;(client => client.DoStuff("Anyone There?"), responseEndpoint);
-    </code></p>
+    </code>
     
 Publish and Notify have the following utility methods that are supported when using the WcfServiceBus discovery proxy. 
 Endpoint susbcriptions can however be simply added to the service.model/client section of a configuration file or manually
